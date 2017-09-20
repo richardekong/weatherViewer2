@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WeatherViewer</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="hint_text">Enter city (e.g, Boston, MA, US)</string>
+    <string name="invalid_url">Invalid URL</string>
+    <string name="title_activity_tab_holder">TabHolder</string>
+</resources>
