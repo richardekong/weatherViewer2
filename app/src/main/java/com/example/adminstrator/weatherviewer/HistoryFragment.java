@@ -3,7 +3,9 @@ package com.example.adminstrator.weatherviewer;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.Adapter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by Adminstrator on 9/19/2017.
  */
@@ -23,15 +26,30 @@ public class HistoryFragment extends Fragment {
 
     RecyclerView recyclerView;
     private DatabaseManager dmgr;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup v, Bundle bundle){
 
         View rootView=inflater.inflate(R.layout.city_history_layout,v,false);
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<String>Items=retreiveCities();
-        recyclerView.setAdapter(new cityHistoryAdapter(getActivity(),Items));
-
+        //create a swpe refresh layout
+        final SwipeRefreshLayout swiper=(SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
+        //set adapter to the recycler
+        recyclerView.setAdapter(new cityHistoryAdapter(getActivity(),retreiveCities()));
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swiper.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable(){
+                    @Override
+                    public void run(){
+                        swiper.setRefreshing(false);
+                        recyclerView.setAdapter(new cityHistoryAdapter(getActivity(),retreiveCities()));
+                    }
+                },3000);
+            }
+        });
         return rootView;
     }
 
