@@ -16,7 +16,7 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
     //instance variable
-    private static final int databaseVersion = 10;
+    private static final int databaseVersion = 11;
     //fields for city History
     private static final String Id="Id";
     private static final String databaseName = "weather_History";
@@ -78,7 +78,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(tableName, new String[]{country_code, city, Weather_desc,temperature,
                         Humidity,Date,day,image_url},
-                country_code + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
+                Id + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         cityHistory place = new cityHistory(cursor.getString(0),cursor.getString(1), cursor.getString(2),Double.parseDouble(cursor.getString(3)),
@@ -114,6 +114,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         }
         //return contactList
         return records;
+
     }
 
     //Deleting one cityHistory Record
