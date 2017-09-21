@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/fab2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="top|end"
+        android:layout_marginStart="-100dp"
+
+        />
+
+    <ImageView
+        android:id="@+id/historyicon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/city_countryhistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize"
+        android:layout_marginTop="@dimen/vertical_text_space"
+        />
+    <TextView
+        android:id="@+id/day_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize"
+        android:layout_marginTop="@dimen/vertical_text_space"/>
+    <TextView
+        android:id="@+id/histroytemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize"
+        android:layout_marginTop="@dimen/vertical_text_space"/>
+    <TextView
+        android:id="@+id/historyhumid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/textsize"
+        android:layout_marginTop="@dimen/vertical_text_space"/>
+</LinearLayout>
