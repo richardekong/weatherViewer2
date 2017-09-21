@@ -131,7 +131,7 @@ public class CurrentCityFragment extends Fragment {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE");
         return dateFormatter.format(calendar.getTime());
     }
-
+    //save api data to the database
     public void saveToHistoryLog(cityHistory history){
         //create an instance of the database manager
         DatabaseManager dmgr=new DatabaseManager(getActivity());
