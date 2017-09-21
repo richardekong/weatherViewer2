@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class HistoryFragment extends Fragment {
         View rootView=inflater.inflate(R.layout.city_history_layout,v,false);
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getActivity()).build());
         //create a swpe refresh layout
         final SwipeRefreshLayout swiper=(SwipeRefreshLayout)rootView.findViewById(R.id.swipe);
         //set adapter to the recycler
@@ -47,7 +50,7 @@ public class HistoryFragment extends Fragment {
                         swiper.setRefreshing(false);
                         recyclerView.setAdapter(new cityHistoryAdapter(getActivity(),retreiveCities()));
                     }
-                },3000);
+                },1000);
             }
         });
         return rootView;
